@@ -5,9 +5,10 @@ import time
 
 
 # TODO: комментарии, ускорить
+# только для HTTP, HTTPS
 def get_valid_proxies(iso_codes: tuple = ('ru'), anonymous: bool = True,
                 type_proxy: str = 'https', all: bool = False, number_of_checks:int = 100,
-                check_timeout: int = 10) -> list:
+                check_timeout: int = 0.5) -> list:
     collector = create_collector(
         name='default_collector',
         resource_types=type_proxy,
@@ -54,10 +55,10 @@ def get_valid_proxies(iso_codes: tuple = ('ru'), anonymous: bool = True,
 def main():
     l = get_valid_proxies(
         iso_codes=(),
-        type_proxy='http',
+        type_proxy='https',
         all=True,
         number_of_checks=30,
-        check_timeout=3)
+    )
     print(l)
     
 
